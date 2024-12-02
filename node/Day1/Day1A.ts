@@ -2,7 +2,7 @@
  * Day 1 A: Result = 2113135
  */
 
-export const day1A = inputString => {
+export const main = inputString => {
 	const { listA, listB } = parseInput(inputString)
 	const sortedListA = listA.sort((a, b) => a - b)
 	const sortedListB = listB.sort((a, b) => a - b)
@@ -18,7 +18,9 @@ export const day1A = inputString => {
 	return result
 }
 
-const parseInput = (input: string): { listA: number[]; listB: number[] } => {
+export const parseInput = (
+	input: string
+): { listA: number[]; listB: number[] } => {
 	const lists = {
 		listA: [],
 		listB: [],
