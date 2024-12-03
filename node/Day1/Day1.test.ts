@@ -1,6 +1,6 @@
 import { expect, test, describe } from 'bun:test'
 
-import { day1A, day1B, parseInput } from './Day1A'
+import { day1A, day1B, parseInput } from './Day1'
 
 describe('Day 1', () => {
 	const testInput = `3   4

@@ -2,8 +2,14 @@ import { input1B } from './input1B'
 
 export const main = (input: string): number => {
 	const levels = parseReportIntoLevels(input)
-	const safeLevels = levels.filter((level, index) => lavelIsSafe(level, index))
-	safeLevels.forEach(level => console.log(level))
+	const safeLevels = levels.filter((level, index) => {
+		const isSafe = levelIsSafe(level, index)
+		if (!isSafe) {
+			console.log('Unsafe level:', level)
+		}
+		return isSafe
+	})
+	// safeLevels.forEach(level => console.log(level))
 	return safeLevels.length
 }
 
@@ -13,10 +19,11 @@ export const parseReportIntoLevels = (input: string) => {
 		.map(line => line.trim())
 		.map(line => line.split(' '))
 		.map(str => str.map(char => parseInt(char)))
+
 	return reportLevels
 }
 
-export const lavelIsSafe = (level: number[], index: number): boolean => {
+export const levelIsSafe = (level: number[], index: number): boolean => {
 	if (level.length < 2 || level[1] === level[0]) {
 		return false
 	}
