@@ -1,5 +1,5 @@
 import { expect, test, describe } from 'bun:test'
-import { levelIsSafe, parseReportIntoLevels } from './day2'
+import { main, levelIsSafe, parseReportIntoLevels } from './day2'
 
 describe('Day 2', () => {
 	const testInput = `7 6 4 2 1
@@ -32,5 +32,9 @@ describe('Day 2', () => {
 
 		const directionChanges = [9, 8, 7, 10, 11]
 		expect(levelIsSafe(directionChanges, 0)).toBe(false)
+	})
+
+	test('Should return the number of safe levels', () => {
+		expect(main(testInput)).toBe(2)
 	})
 })
