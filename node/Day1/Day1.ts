@@ -1,8 +1,10 @@
+import input from './day1.input'
+
 /**
  * Day 1 A: Result = 2113135
  */
 
-export const main = inputString => {
+export const day1A = inputString => {
 	const { listA, listB } = parseInput(inputString)
 	const sortedListA = listA.sort((a, b) => a - b)
 	const sortedListB = listB.sort((a, b) => a - b)
@@ -36,3 +38,18 @@ export const parseInput = (
 		})
 	return lists
 }
+
+export const day1B = (inputString: string) => {
+	const { listA, listB } = parseInput(inputString)
+
+	const multipliers = listA
+		.map(num => {
+			const instancesInListB = listB.filter(numB => numB === num)
+			return num * instancesInListB.length
+		})
+		.reduce((acc, curr) => acc + curr, 0)
+	return multipliers
+}
+
+const day1BResults = day1B(input)
+console.log('Day 1 B: Result =', day1BResults)
