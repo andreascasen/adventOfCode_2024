@@ -1,5 +1,5 @@
 import { expect, test, describe } from 'bun:test'
-import { main, levelIsSafe, parseReportIntoLevels } from './day2'
+import { main, levelIsSafe, parseReportIntoLevels, levelIsSafeV2 } from './day2'
 
 describe('Day 2', () => {
 	const testInput = `7 6 4 2 1
@@ -34,7 +34,21 @@ describe('Day 2', () => {
 		expect(levelIsSafe(directionChanges, 0)).toBe(false)
 	})
 
+	test('Should correctly check if a level is safe with the damp remover', () => {
+		const safeLevel = [-1, 2, 4, 5, 8]
+		expect(levelIsSafeV2(safeLevel, 0)).toBe(true)
+
+		const levelWithTooBigDiff = [1, 2, 1, 5, 9]
+		expect(levelIsSafeV2(levelWithTooBigDiff, 0)).toBe(true)
+
+		const levelWithSameValues = [1, 2, 3, 3, 8]
+		expect(levelIsSafeV2(levelWithSameValues, 0)).toBe(false)
+
+		const directionChanges = [9, 8, 7, 10, 6]
+		expect(levelIsSafeV2(directionChanges, 0)).toBe(false)
+	})
+
 	test('Should return the number of safe levels', () => {
-		expect(main(testInput)).toBe(2)
+		expect(main(testInput)).toBe(4)
 	})
 })
