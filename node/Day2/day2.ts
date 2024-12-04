@@ -2,6 +2,7 @@ import { input1B } from './input1B'
 
 export const main = (input: string): number => {
 	const levels = parseReportIntoLevels(input)
+	console.log('Levels:', levels.length)
 	const safeLevels = levels.filter((level, index) => {
 		const isSafe = levelIsSafe(level, index)
 		if (!isSafe) {
